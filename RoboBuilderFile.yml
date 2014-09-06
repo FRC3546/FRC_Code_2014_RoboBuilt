@@ -418,7 +418,7 @@ Children:
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
-  - Name: Compressor
+  - Name: Pneumatic System
     Base: Subsystem
     Children:
     - Name: Compressor
@@ -970,19 +970,27 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: AutonomousCommand
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
   Properties: {}
 Properties:
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
   Wiring File: !!robotbuilder.data.properties.FileProperty {default: '', extension: html,
-    folder: false, name: Wiring File, validators: null, value: ..\..\..\Desktop\Wiring Table.html}
+    folder: false, name: Wiring File, validators: null, value: Wiring Table.html}
   C++ Windriver Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Windriver\workspace',
     extension: null, folder: true, name: C++ Windriver Workspace, validators: null,
     value: 'C:\Windriver\workspace'}
   Use Default Java Package: !!robotbuilder.data.properties.BooleanProperty {default: true,
-    name: Use Default Java Package, validators: null, value: true}
+    name: Use Default Java Package, validators: null, value: false}
   Java Package: !!robotbuilder.data.properties.StringProperty {default: org.usfirst.frc0000,
-    name: Java Package, validators: null, value: com.team3546.robotbuilt}
+    name: Java Package, validators: null, value: com.team3546.season2014.RoboBuilt}
   Export Subsystems: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Subsystems, validators: null, value: true}
   Team Number: !!robotbuilder.data.properties.IntegerProperty {default: 0, name: Team Number,

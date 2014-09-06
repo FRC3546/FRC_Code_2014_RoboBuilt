@@ -24,6 +24,7 @@ public class  ToggleLights extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        //Call the toggleLights() method from the lights subsystem
         Robot.lights.toggleLights();
     }
     // Called repeatedly when this Command is scheduled to run

@@ -1,6 +1,6 @@
-MIDlet-Name: RobotBuilderTest
+MIDlet-Name: Team3546_2014Robobuilt
 MIDlet-Version: 1.0.0
 MIDlet-Vendor: FIRST
-MIDlet-1: Robot, , org.usfirst.frc3546.Robotbuilt.Robot
+MIDlet-1: Main, , com.team3546.season2014.RoboBuilt.Robot
 MicroEdition-Profile: IMP-1.0
 MicroEdition-Configuration: CLDC-1.1

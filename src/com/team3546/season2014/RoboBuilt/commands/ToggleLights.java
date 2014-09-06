@@ -11,7 +11,7 @@ package com.team3546.season2014.RoboBuilt.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
- *
+ * Toggles the status of the lights between on and off
  */
 public class  ToggleLights extends Command {
     public ToggleLights() {

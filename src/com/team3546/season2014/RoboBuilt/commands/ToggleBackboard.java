@@ -11,7 +11,7 @@ package com.team3546.season2014.RoboBuilt.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
- *
+ * Toggles the position of the backboard between extended and retracted
  */
 public class  ToggleBackboard extends Command {
     public ToggleBackboard() {

@@ -8,13 +8,26 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package com.team3546.season2014.RoboBuilt.commands;
+import com.team3546.season2014.RoboBuilt.RobotSystemsGroup;
+import com.team3546.season2014.RoboBuilt.StatusManager;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
- *
+ * Extends the pickup arm and turns on the pickup motors
  */
 public class  Pickup extends Command {
+    //Stores the systems this command uses
+    RobotSystemsGroup requiredSystems;
+    //Stores the result given by the status manager so we don't undo what we haven't done
+    boolean executeCommand;
     public Pickup() {
+        //Build a profile to describe the usage of this command
+        requiredSystems = new RobotSystemsGroup();
+        //This command needs to use the pickup arm
+        requiredSystems.armMovementSolenoid.value = StatusManager.uses;
+        requiredSystems.pickupArmMotor.value = StatusManager.uses;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -23,6 +36,13 @@ public class  Pickup extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
+        if (executeCommand) {
+            //Set the position of the arm movement solenoid to extended
+            Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kForward);
+            //Set the pickup arm motor speed to the constant defined in Robot
+            Robot.pickupArm.setPickupArmMotor(Robot.pickupArmMotorSpeed);
+        }
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
@@ -33,9 +53,17 @@ public class  Pickup extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
+        //Only undo what we've done if we've actually done it
+        if (executeCommand) {
+            Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kReverse);
+            Timer.delay(0.5);
+            Robot.pickupArm.setPickupArmMotor(0);
+            Robot.statusManager.doneWithSystems(requiredSystems);
+        }
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        end();
     }
 }

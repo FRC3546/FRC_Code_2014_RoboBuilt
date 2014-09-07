@@ -37,4 +37,12 @@ public class PickupArm extends Subsystem {
     public void setArmMovementSolenoid(DoubleSolenoid.Value position) {
         armMovementSolenoid.set(position);
     }
+
+    /**
+     * Sets the speed of the pickup motor
+     * @param setPoint
+     */
+    public void setPickupArmMotor(double setPoint) {
+        pickupArmMotor.set(setPoint);
+    }
 }

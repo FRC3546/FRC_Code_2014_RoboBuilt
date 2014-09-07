@@ -24,7 +24,7 @@ public class  Catch extends Command {
     public Catch() {
         //Build a profile to describe the usage of this command
         requiredSystems = new RobotSystemsGroup();
-        //This command just needs to use the backboard
+        //This command needs to use the backboard and pickup arm
         requiredSystems.backboardSolenoid.value = StatusManager.uses;
         requiredSystems.armMovementSolenoid.value = StatusManager.uses;
         // Use requires() here to declare subsystem dependencies

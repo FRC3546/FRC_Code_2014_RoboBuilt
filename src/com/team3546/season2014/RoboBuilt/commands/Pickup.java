@@ -40,8 +40,8 @@ public class  Pickup extends Command {
         if (executeCommand) {
             //Set the position of the arm movement solenoid to extended
             Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kForward);
-            //Set the pickup arm motor speed to the constant defined in Robot
-            Robot.pickupArm.setPickupArmMotor(Robot.pickupArmMotorSpeed);
+            //Set the pickup arm motor to in
+            Robot.pickupArm.setPickupArmMotor("In");
         }
     }
     // Called repeatedly when this Command is scheduled to run
@@ -57,7 +57,7 @@ public class  Pickup extends Command {
         if (executeCommand) {
             Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kReverse);
             Timer.delay(0.5);
-            Robot.pickupArm.setPickupArmMotor(0);
+            Robot.pickupArm.setPickupArmMotor("Off");
             Robot.statusManager.doneWithSystems(requiredSystems);
         }
     }

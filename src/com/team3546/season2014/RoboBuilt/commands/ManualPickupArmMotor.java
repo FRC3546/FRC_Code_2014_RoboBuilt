@@ -36,8 +36,8 @@ public class  ManualPickupArmMotor extends Command {
         //Check for any conflicts between other commands
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
         if (executeCommand) {
-            //Set the speed of the pickup motor according to the global speed
-            Robot.pickupArm.setPickupArmMotor(Robot.pickupArmMotorSpeed);
+            //Set the pickup motor to in
+            Robot.pickupArm.setPickupArmMotor("In");
         }
     }
     // Called repeatedly when this Command is scheduled to run
@@ -51,7 +51,7 @@ public class  ManualPickupArmMotor extends Command {
     protected void end() {
         //Only undo what we've done if we've actually done it
         if (executeCommand) {
-            Robot.pickupArm.setPickupArmMotor(0);
+            Robot.pickupArm.setPickupArmMotor("Off");
             Robot.statusManager.doneWithSystems(requiredSystems);
         }
     }

@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package com.team3546.season2014.RoboBuilt.subsystems;
+import com.team3546.season2014.RoboBuilt.Robot;
 import com.team3546.season2014.RoboBuilt.RobotMap;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -40,10 +41,16 @@ public class PickupArm extends Subsystem {
     }
 
     /**
-     * Sets the speed of the pickup motor
-     * @param setPoint SetPoint
+     * Sets the state of the pickup motor
+     * @param setPoint "Off", "In", or "Out"
      */
-    public void setPickupArmMotor(double setPoint) {
-        pickupArmMotor.set(setPoint);
+    public void setPickupArmMotor(String setPoint) {
+        if (setPoint.equals("Off")) {
+            pickupArmMotor.set(0);
+        } else if (setPoint.equals("In")) {
+            pickupArmMotor.set(Robot.pickupArmMotorSpeed);
+        } else if (setPoint.equals("Out")) {
+            pickupArmMotor.set(-Robot.pickupArmMotorSpeed);
+        }
     }
 }

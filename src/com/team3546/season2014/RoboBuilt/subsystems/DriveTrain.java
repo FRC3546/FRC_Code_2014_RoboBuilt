@@ -42,7 +42,6 @@ public class DriveTrain extends Subsystem {
     public void stop() {
         robotDrive4.drive(0,0);
     }
-
     /**
      * Shifts gears to the specified level
      * @param setPoint "Up" or "Down"

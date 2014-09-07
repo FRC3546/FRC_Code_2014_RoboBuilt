@@ -9,7 +9,6 @@
 // it from being updated in the future.
 package com.team3546.season2014.RoboBuilt.subsystems;
 import com.team3546.season2014.RoboBuilt.RobotMap;
-import com.team3546.season2014.RoboBuilt.commands.*;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 /**
@@ -29,7 +28,6 @@ public class Lights extends Subsystem {
         //Set the default value of the lights to on
 	    lights.set(Relay.Value.kOn);
     }
-
     /**
      * Toggles the status of the lights
      */

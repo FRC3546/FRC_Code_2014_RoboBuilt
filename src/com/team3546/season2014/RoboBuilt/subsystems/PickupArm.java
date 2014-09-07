@@ -39,7 +39,6 @@ public class PickupArm extends Subsystem {
     public void setArmMovementSolenoid(DoubleSolenoid.Value position) {
         armMovementSolenoid.set(position);
     }
-
     /**
      * Sets the state of the pickup motor
      * @param setPoint "Off", "In", or "Out"

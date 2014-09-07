@@ -1,6 +1,5 @@
 package com.team3546.season2014.RoboBuilt;
 
-import java.util.Objects;
 
 /**
  * Stores information about the systems of the robot
@@ -18,7 +17,7 @@ public class RobotSystemsGroup {
     public RobotSystem finalShooterLimitSwitch2 = new RobotSystem();
 
     public RobotSystemsGroup() {
-        int[] defaultValues = new int[9];
+        int[] defaultValues = new int[6];
         for (int i = 0; i < defaultValues.length; i++) {
             defaultValues[i] = StatusManager.notInUse;
         }
@@ -36,9 +35,6 @@ public class RobotSystemsGroup {
         shooterReleaseSolenoid.value = values[3];
         secondaryShooterReleaseSolenoid.value = values[4];
         shooterWinchMotor.value = values[5];
-        initialShooterLimitSwitch.value = values[6];
-        finalShooterLimitSwitch1.value = values[7];
-        finalShooterLimitSwitch2.value = values[8];
     }
 
     /**

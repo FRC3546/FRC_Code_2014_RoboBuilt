@@ -49,7 +49,11 @@ public class Shooter extends Subsystem {
         if (setPoint.equals("Off")) {
             shooterWinchMotor.set(0);
         } else if (setPoint.equals("Wind")) {
-            shooterWinchMotor.set(-Robot.shooterWinchMotorSpeed);
+            if (!intialShooterLimitSwitch.get()) {
+                shooterWinchMotor.set(-Robot.shooterWinchMotorSpeed);
+            } else {
+                shooterWinchMotor.set(-Robot.shooterWinchMotorSlowSpeed);
+            }
         } else if (setPoint.equals("Unwind")) {
             shooterWinchMotor.set(Robot.shooterWinchMotorSpeed);
         }

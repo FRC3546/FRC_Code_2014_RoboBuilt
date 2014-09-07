@@ -52,7 +52,6 @@ public class  Herd extends Command {
     protected void end() {
         //Only undo what we've done if we've actually done it
         if (executeCommand) {
-            Robot.backboard.setBackboardSolenoid(DoubleSolenoid.Value.kReverse);
             Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kReverse);
             Robot.statusManager.doneWithSystems(requiredSystems);
         }

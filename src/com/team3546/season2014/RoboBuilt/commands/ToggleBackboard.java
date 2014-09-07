@@ -49,6 +49,7 @@ public class  ToggleBackboard extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
+        //Only undo what we've done if we've actually done it
         if (executeCommand) {
             Robot.statusManager.doneWithSystems(requiredSystems);
         }

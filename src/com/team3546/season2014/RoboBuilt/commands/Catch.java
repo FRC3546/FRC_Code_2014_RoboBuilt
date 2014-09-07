@@ -48,10 +48,11 @@ public class  Catch extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
     // Called once after isFinished returns true
     protected void end() {
+        //Only undo what we've done if we've actually done it
         if (executeCommand) {
             Robot.backboard.setBackboardSolenoid(DoubleSolenoid.Value.kReverse);
             Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kReverse);

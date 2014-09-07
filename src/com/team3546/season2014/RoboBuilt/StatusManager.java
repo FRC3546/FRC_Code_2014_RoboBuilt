@@ -30,16 +30,16 @@ public class StatusManager {
     public boolean checkForConflictsAndSetNewStatus(RobotSystemsGroup needs) {
         int[] currentRobotStatus =  robotStatus.getValues();
         for (int i  = 0; i < needs.getValues().length; i++) {
-            if ((needs.getValues()[i] == uses || needs.getValues()[i] == dependentOn) && currentRobotStatus[i] == inUse) {
-                return false;
+            if (currentRobotStatus[i] != notInUse && needs.getValues()[i] != independentOf)  {
+                if (currentRobotStatus[i] == inUse || needs.getValues()[i] == uses) {
+                    return false;
+                }
             }
         }
 
         int[] newRobotStatus =  robotStatus.getValues();
         for (int i = 0; i < needs.getValues().length; i++) {
-            if (needs.getValues()[i] != dependentOn) {
-                newRobotStatus[i] = newRobotStatus[i] + needs.getValues()[i];
-            }
+            newRobotStatus[i] += needs.getValues()[i];
         }
         robotStatus.setValues(newRobotStatus);
 
@@ -53,9 +53,7 @@ public class StatusManager {
     public void doneWithSystems(RobotSystemsGroup systems) {
         int[] newRobotStatus =  robotStatus.getValues();
         for (int i = 0; i < systems.getValues().length; i++) {
-            if (systems.getValues()[i] == uses) {
-                newRobotStatus[i] = notInUse;
-            }
+            newRobotStatus[i] -= systems.getValues()[i];
         }
         robotStatus.setValues(newRobotStatus);
     }

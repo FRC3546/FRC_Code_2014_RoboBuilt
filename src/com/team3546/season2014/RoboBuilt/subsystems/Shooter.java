@@ -54,4 +54,22 @@ public class Shooter extends Subsystem {
             shooterWinchMotor.set(Robot.shooterWinchMotorSpeed);
         }
     }
+
+    public void toggleSecondaryShooterRelease() {
+        //Gets the current position of the secondary shooter release solenoid and inverts it
+        if (secondaryShooterReleaseSolenoid.get() == DoubleSolenoid.Value.kReverse) {
+            secondaryShooterReleaseSolenoid.set(DoubleSolenoid.Value.kForward);
+        } else {
+            secondaryShooterReleaseSolenoid.set(DoubleSolenoid.Value.kReverse);
+        }
+    }
+
+    public void toggleShooterRelease() {
+        //Gets the current position of the secondary shooter release solenoid and inverts it
+        if (shooterReleaseSolenoid.get() == DoubleSolenoid.Value.kReverse) {
+            shooterReleaseSolenoid.set(DoubleSolenoid.Value.kForward);
+        } else {
+            shooterReleaseSolenoid.set(DoubleSolenoid.Value.kReverse);
+        }
+    }
 }

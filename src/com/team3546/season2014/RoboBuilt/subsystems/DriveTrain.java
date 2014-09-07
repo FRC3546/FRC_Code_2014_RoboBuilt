@@ -48,9 +48,9 @@ public class DriveTrain extends Subsystem {
      * @param setPoint "Up" or "Down"
      */
     public void shift(String setPoint) {
-        if (setPoint == "Up") {
+        if (setPoint.equals("Up")) {
             shifterSolenoid.set(DoubleSolenoid.Value.kReverse);
-        } else if (setPoint == "Down") {
+        } else if (setPoint.equals("Down")) {
             shifterSolenoid.set(DoubleSolenoid.Value.kForward);
         }
     }

@@ -36,8 +36,8 @@ public class  ManualUnRewind extends Command {
         //Check for any conflicts between other commands
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
         if (executeCommand) {
-            //Set the position of the arm movement solenoid to extended
-            Robot.shooter.setShooterWinchMotor("Out");
+            //Set the state of the winch motor to unwind
+            Robot.shooter.setShooterWinchMotor("Unwind");
         }
     }
     // Called repeatedly when this Command is scheduled to run

@@ -14,6 +14,7 @@ import com.team3546.season2014.RoboBuilt.Robot;
  * Toggles the status of the lights between on and off
  */
 public class  ToggleLights extends Command {
+    //The lights are completely separate from all other systems, so we won't bother with the StatusManager
     public ToggleLights() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

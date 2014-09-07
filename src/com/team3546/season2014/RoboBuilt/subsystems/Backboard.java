@@ -29,6 +29,9 @@ public class Backboard extends Subsystem {
         //Sets the default position of the solenoid to retracted
         backboardSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
+    /**
+     * Toggles the position of the backboard
+     */
     public void toggleBackBoard() {
         //Gets the current position of the backboard solenoid and inverts it
         if (backboardSolenoid.get() == DoubleSolenoid.Value.kReverse) {
@@ -36,5 +39,12 @@ public class Backboard extends Subsystem {
         } else {
             backboardSolenoid.set(DoubleSolenoid.Value.kReverse);
         }
+    }
+    /**
+     * Set the position of the backboard
+     * @param position
+     */
+    public void setBackboardSolenoid(DoubleSolenoid.Value position) {
+        backboardSolenoid.set(position);
     }
 }

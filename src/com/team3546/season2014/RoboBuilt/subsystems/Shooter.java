@@ -42,7 +42,7 @@ public class Shooter extends Subsystem {
         shooterReleaseSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
     /**
-     * Sets the state of the winch motor
+     * Sets the state of the winch motor, even slows it down on initial switch when winding
      * @param setPoint "Off", "Wind", or "Unwind"
      */
     public void setShooterWinchMotor(String setPoint) {
@@ -59,6 +59,9 @@ public class Shooter extends Subsystem {
         }
     }
 
+    /**
+     * Toggles the secondary shooter release
+     */
     public void toggleSecondaryShooterRelease() {
         //Gets the current position of the secondary shooter release solenoid and inverts it
         if (secondaryShooterReleaseSolenoid.get() == DoubleSolenoid.Value.kReverse) {
@@ -68,6 +71,9 @@ public class Shooter extends Subsystem {
         }
     }
 
+    /**
+     * Toggles the primary shooter release
+     */
     public void toggleShooterRelease() {
         //Gets the current position of the secondary shooter release solenoid and inverts it
         if (shooterReleaseSolenoid.get() == DoubleSolenoid.Value.kReverse) {

@@ -757,7 +757,7 @@ Children:
           name: Command
           type: Command
           validators: *id018
-          value: Shoot
+          value: Shoot and rewind
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: '1'
@@ -839,7 +839,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Lights}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: Shoot
+  - Name: Just Shoot
     Base: Command
     Children: []
     Properties:
@@ -941,6 +941,12 @@ Children:
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+  - Name: Shoot and rewind
+    Base: Command Group
+    Children: []
+    Properties:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   Properties: {}

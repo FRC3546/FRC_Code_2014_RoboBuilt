@@ -49,16 +49,19 @@ public class Shooter extends Subsystem {
         if (setPoint.equals("Off")) {
             shooterWinchMotor.set(0);
         } else if (setPoint.equals("Wind")) {
-            if (!intialShooterLimitSwitch.get()) {
-                shooterWinchMotor.set(-Robot.shooterWinchMotorSpeed);
-            } else {
-                shooterWinchMotor.set(-Robot.shooterWinchMotorSlowSpeed);
+            //Only wind the winch in if the switches are not pressed
+            if (!(finalShooterLimitSwitch1.get() || finalShooterLimitSwitch2.get())) {
+                if (!intialShooterLimitSwitch.get()) {
+                    shooterWinchMotor.set(-Robot.shooterWinchMotorSpeed);
+                } else {
+                    //Slow down because the initial switch is depressed
+                    shooterWinchMotor.set(-Robot.shooterWinchMotorSlowSpeed);
+                }
             }
         } else if (setPoint.equals("Unwind")) {
             shooterWinchMotor.set(Robot.shooterWinchMotorSpeed);
         }
     }
-
     /**
      * Toggles the secondary shooter release
      */
@@ -70,7 +73,6 @@ public class Shooter extends Subsystem {
             setSecondaryShooterRelease(DoubleSolenoid.Value.kReverse);
         }
     }
-
     /**
      * Toggles the primary shooter release
      */
@@ -82,7 +84,6 @@ public class Shooter extends Subsystem {
             setShooterRelease(DoubleSolenoid.Value.kReverse);
         }
     }
-
     /**
      * Sets the primary shooter release
      * @param position Position to set it to
@@ -90,12 +91,18 @@ public class Shooter extends Subsystem {
     public void setShooterRelease(DoubleSolenoid.Value position) {
         shooterReleaseSolenoid.set(position);
     }
-
     /**
      * Sets the secondary shooter release
      * @param position Position to set it to
      */
     public void setSecondaryShooterRelease(DoubleSolenoid.Value position) {
         secondaryShooterReleaseSolenoid.set(position);
+    }
+    /**
+     * Checks if the switches are pressed
+     * @return Are either of the switches pressed?
+     */
+    public boolean eitherFinalSwitchPressed() {
+        return (finalShooterLimitSwitch1.get() || finalShooterLimitSwitch2.get());
     }
 }

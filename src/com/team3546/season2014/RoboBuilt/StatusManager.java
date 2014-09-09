@@ -48,6 +48,7 @@ public class StatusManager {
 
     /**
      * Release the specified RobotSystems to the rest of the robot
+     * ONLY CALL IF YOU ARE SURE CHECKFORCONFLICTS() WAS SUCCESSFUL
      * @param systems Specifies which systems to release
      */
     public void doneWithSystems(RobotSystemsGroup systems) {

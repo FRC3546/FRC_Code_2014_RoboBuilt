@@ -65,9 +65,9 @@ public class Shooter extends Subsystem {
     public void toggleSecondaryShooterRelease() {
         //Gets the current position of the secondary shooter release solenoid and inverts it
         if (secondaryShooterReleaseSolenoid.get() == DoubleSolenoid.Value.kReverse) {
-            secondaryShooterReleaseSolenoid.set(DoubleSolenoid.Value.kForward);
+            setSecondaryShooterRelease(DoubleSolenoid.Value.kForward);
         } else {
-            secondaryShooterReleaseSolenoid.set(DoubleSolenoid.Value.kReverse);
+            setSecondaryShooterRelease(DoubleSolenoid.Value.kReverse);
         }
     }
 
@@ -77,9 +77,25 @@ public class Shooter extends Subsystem {
     public void toggleShooterRelease() {
         //Gets the current position of the secondary shooter release solenoid and inverts it
         if (shooterReleaseSolenoid.get() == DoubleSolenoid.Value.kReverse) {
-            shooterReleaseSolenoid.set(DoubleSolenoid.Value.kForward);
+            setShooterRelease(DoubleSolenoid.Value.kForward);
         } else {
-            shooterReleaseSolenoid.set(DoubleSolenoid.Value.kReverse);
+            setShooterRelease(DoubleSolenoid.Value.kReverse);
         }
+    }
+
+    /**
+     * Sets the primary shooter release
+     * @param position Position to set it to
+     */
+    public void setShooterRelease(DoubleSolenoid.Value position) {
+        shooterReleaseSolenoid.set(position);
+    }
+
+    /**
+     * Sets the secondary shooter release
+     * @param position Position to set it to
+     */
+    public void setSecondaryShooterRelease(DoubleSolenoid.Value position) {
+        secondaryShooterReleaseSolenoid.set(position);
     }
 }

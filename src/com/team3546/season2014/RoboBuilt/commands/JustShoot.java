@@ -13,7 +13,6 @@ import com.team3546.season2014.RoboBuilt.StatusManager;
 import com.team3546.season2014.RoboBuilt.subsystems.Backboard;
 import com.team3546.season2014.RoboBuilt.subsystems.PickupArm;
 import com.team3546.season2014.RoboBuilt.subsystems.Shooter;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;

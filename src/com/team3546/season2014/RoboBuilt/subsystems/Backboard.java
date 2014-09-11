@@ -9,7 +9,6 @@
 // it from being updated in the future.
 package com.team3546.season2014.RoboBuilt.subsystems;
 import com.team3546.season2014.RoboBuilt.RobotMap;
-import com.team3546.season2014.RoboBuilt.commands.*;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 /**
@@ -45,7 +44,7 @@ public class Backboard extends Subsystem {
     }
     /**
      * Set the position of the backboard
-     * @param position
+     * @param position constant from Backboard class
      */
     public void setBackboardSolenoid(DoubleSolenoid.Value position) {
         backboardSolenoid.set(position);

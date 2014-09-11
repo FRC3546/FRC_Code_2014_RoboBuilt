@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package com.team3546.season2014.RoboBuilt.commands;
+import com.team3546.season2014.RoboBuilt.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
@@ -23,7 +24,7 @@ public class  ShiftDown extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.driveTrain.shift("Down");
+        Robot.driveTrain.shift(DriveTrain.lowGear);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {

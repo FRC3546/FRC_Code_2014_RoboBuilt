@@ -10,6 +10,8 @@
 package com.team3546.season2014.RoboBuilt.commands;
 import com.team3546.season2014.RoboBuilt.RobotSystemsGroup;
 import com.team3546.season2014.RoboBuilt.StatusManager;
+import com.team3546.season2014.RoboBuilt.subsystems.Backboard;
+import com.team3546.season2014.RoboBuilt.subsystems.PickupArm;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
@@ -39,8 +41,8 @@ public class  Catch extends Command {
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
         if (executeCommand) {
             //Set the position of the backboard and arm movement solenoid to extended
-            Robot.backboard.setBackboardSolenoid(DoubleSolenoid.Value.kForward);
-            Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kForward);
+            Robot.backboard.setBackboardSolenoid(Backboard.backBoardOut);
+            Robot.pickupArm.setArmMovementSolenoid(PickupArm.pickupArmOut);
         }
     }
     // Called repeatedly when this Command is scheduled to run
@@ -54,8 +56,8 @@ public class  Catch extends Command {
     protected void end() {
         //Only undo what we've done if we've actually done it
         if (executeCommand) {
-            Robot.backboard.setBackboardSolenoid(DoubleSolenoid.Value.kReverse);
-            Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kReverse);
+            Robot.backboard.setBackboardSolenoid(Backboard.backBoardIn);
+            Robot.pickupArm.setArmMovementSolenoid(PickupArm.pickupArmIn);
             Robot.statusManager.doneWithSystems(requiredSystems);
         }
     }

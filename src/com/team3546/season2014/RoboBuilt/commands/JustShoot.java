@@ -10,6 +10,9 @@
 package com.team3546.season2014.RoboBuilt.commands;
 import com.team3546.season2014.RoboBuilt.RobotSystemsGroup;
 import com.team3546.season2014.RoboBuilt.StatusManager;
+import com.team3546.season2014.RoboBuilt.subsystems.Backboard;
+import com.team3546.season2014.RoboBuilt.subsystems.PickupArm;
+import com.team3546.season2014.RoboBuilt.subsystems.Shooter;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -41,19 +44,19 @@ public class  JustShoot extends Command {
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
         if (executeCommand) {
             //Loosen the cable
-            Robot.shooter.setShooterRelease(DoubleSolenoid.Value.kForward);
-            Robot.shooter.setShooterWinchMotor("Unwind");
+            Robot.shooter.setShooterRelease(Shooter.shooterReleaseEngaged);
+            Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorUnwind);
             Timer.delay(1);
-            Robot.shooter.setShooterWinchMotor("Off");
-            Robot.shooter.setShooterRelease(DoubleSolenoid.Value.kReverse);
+            Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorOff);
+            Robot.shooter.setShooterRelease(Shooter.shooterReleaseDisengaged);
 
             //Setup backboard and put arms down
-            Robot.backboard.setBackboardSolenoid(DoubleSolenoid.Value.kForward);
-            Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kForward);
+            Robot.backboard.setBackboardSolenoid(Backboard.backBoardOut);
+            Robot.pickupArm.setArmMovementSolenoid(PickupArm.pickupArmOut);
             Timer.delay(0.5);
 
             //FIRE!
-            Robot.shooter.setSecondaryShooterRelease(DoubleSolenoid.Value.kForward);
+            Robot.shooter.setSecondaryShooterRelease(Shooter.secondaryShooterReleaseDisengaged);
             Timer.delay(2);
 
 
@@ -70,8 +73,8 @@ public class  JustShoot extends Command {
     protected void end() {
         if (executeCommand) {
             //Reset latch and re-engage dog gear
-            Robot.shooter.setSecondaryShooterRelease(DoubleSolenoid.Value.kReverse);
-            Robot.shooter.setShooterRelease(DoubleSolenoid.Value. kForward);
+            Robot.shooter.setSecondaryShooterRelease(Shooter.secondaryShooterReleaseEngaged);
+            Robot.shooter.setShooterRelease(Shooter.shooterReleaseEngaged);
             Timer.delay(0.5);
 
             //At this point, the arms have to stay extended so that they don't hit the currently released catapult

@@ -10,6 +10,8 @@
 package com.team3546.season2014.RoboBuilt.commands;
 import com.team3546.season2014.RoboBuilt.RobotSystemsGroup;
 import com.team3546.season2014.RoboBuilt.StatusManager;
+import com.team3546.season2014.RoboBuilt.subsystems.PickupArm;
+import com.team3546.season2014.RoboBuilt.subsystems.Shooter;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
@@ -37,7 +39,7 @@ public class  ManualPickupArmMotor extends Command {
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
         if (executeCommand) {
             //Set the pickup motor to in
-            Robot.pickupArm.setPickupArmMotor("In");
+            Robot.pickupArm.setPickupArmMotor(PickupArm.pickupArmMotorIn);
         }
     }
     // Called repeatedly when this Command is scheduled to run
@@ -51,7 +53,7 @@ public class  ManualPickupArmMotor extends Command {
     protected void end() {
         //Only undo what we've done if we've actually done it
         if (executeCommand) {
-            Robot.pickupArm.setPickupArmMotor("Off");
+            Robot.pickupArm.setPickupArmMotor(Shooter.shooterWinchMotorOff);
             Robot.statusManager.doneWithSystems(requiredSystems);
         }
     }

@@ -10,6 +10,7 @@
 package com.team3546.season2014.RoboBuilt.commands;
 import com.team3546.season2014.RoboBuilt.RobotSystemsGroup;
 import com.team3546.season2014.RoboBuilt.StatusManager;
+import com.team3546.season2014.RoboBuilt.subsystems.PickupArm;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -39,9 +40,9 @@ public class  Pickup extends Command {
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
         if (executeCommand) {
             //Set the position of the arm movement solenoid to extended
-            Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kForward);
+            Robot.pickupArm.setArmMovementSolenoid(PickupArm.pickupArmOut);
             //Set the pickup arm motor to in
-            Robot.pickupArm.setPickupArmMotor("In");
+            Robot.pickupArm.setPickupArmMotor(PickupArm.pickupArmMotorIn);
         }
     }
     // Called repeatedly when this Command is scheduled to run
@@ -55,9 +56,9 @@ public class  Pickup extends Command {
     protected void end() {
         //Only undo what we've done if we've actually done it
         if (executeCommand) {
-            Robot.pickupArm.setArmMovementSolenoid(DoubleSolenoid.Value.kReverse);
+            Robot.pickupArm.setArmMovementSolenoid(PickupArm.pickupArmIn);
             Timer.delay(0.5);
-            Robot.pickupArm.setPickupArmMotor("Off");
+            Robot.pickupArm.setPickupArmMotor(PickupArm.pickupArmMotorOff);
             Robot.statusManager.doneWithSystems(requiredSystems);
         }
     }

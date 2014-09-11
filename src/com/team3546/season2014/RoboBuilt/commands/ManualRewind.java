@@ -10,6 +10,7 @@
 package com.team3546.season2014.RoboBuilt.commands;
 import com.team3546.season2014.RoboBuilt.RobotSystemsGroup;
 import com.team3546.season2014.RoboBuilt.StatusManager;
+import com.team3546.season2014.RoboBuilt.subsystems.Shooter;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
@@ -37,7 +38,7 @@ public class  ManualRewind extends Command {
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
         if (executeCommand) {
             //Set the state of the winch motor to wind
-            Robot.shooter.setShooterWinchMotor("Wind");
+            Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorWind);
         }
     }
     // Called repeatedly when this Command is scheduled to run
@@ -50,7 +51,7 @@ public class  ManualRewind extends Command {
     // Called once after isFinished returns true
     protected void end() {
         if (executeCommand) {
-            Robot.shooter.setShooterWinchMotor("Off");
+            Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorOff);
             Robot.statusManager.doneWithSystems(requiredSystems);
         }
     }

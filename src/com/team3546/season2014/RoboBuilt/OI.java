@@ -87,7 +87,7 @@ public class OI {
         manualPickupArmMotorButton = new JoystickButton(joystick2, 5);
         manualPickupArmMotorButton.whileHeld(new ManualPickupArmMotor());
         passBallButton = new JoystickButton(joystick2, 2);
-        passBallButton.whileHeld(new PassBall());
+        passBallButton.whenPressed(new PassBall());
         herdButton = new JoystickButton(joystick2, 1);
         herdButton.whileHeld(new Herd());
         joystick1 = new Joystick(1);

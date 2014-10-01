@@ -52,9 +52,11 @@ public class  PassBall extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //Update the values so the watchdog doesn't attack
-        Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorUnwind);
-        Robot.pickupArm.setPickupArmMotor(PickupArm.pickupArmMotorOut);
+        if (executeCommand) {
+            //Update the values so the watchdog doesn't attack
+            Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorUnwind);
+            Robot.pickupArm.setPickupArmMotor(PickupArm.pickupArmMotorOut);
+        }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -64,7 +66,7 @@ public class  PassBall extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        System.out.println("Finished!");
+//        System.out.println("Finished!");
         if (executeCommand) {
             Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorOff);
             Robot.pickupArm.setPickupArmMotor(PickupArm.pickupArmMotorOff);

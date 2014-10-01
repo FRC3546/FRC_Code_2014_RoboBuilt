@@ -46,6 +46,10 @@ public class  Pickup extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        if (executeCommand) {
+            //Keep the watch dog from attacking
+            Robot.pickupArm.setPickupArmMotor(PickupArm.pickupArmMotorIn);
+        }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

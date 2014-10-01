@@ -48,12 +48,13 @@ public class  Pickup extends Command {
     protected void execute() {
         if (executeCommand) {
             //Keep the watch dog from attacking
+            //TODO: Fix Output not updated enough
             Robot.pickupArm.setPickupArmMotor(PickupArm.pickupArmMotorIn);
         }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return !(Robot.oi.pickUpButton.get());
     }
     // Called once after isFinished returns true
     protected void end() {

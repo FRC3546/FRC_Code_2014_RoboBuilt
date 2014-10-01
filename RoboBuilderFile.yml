@@ -53,7 +53,7 @@ Children:
           default: Victor
           name: Type
           validators: null
-          value: Victor
+          value: Jaguar
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
           choices: &id012 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
           default: '1'
@@ -128,28 +128,6 @@ Children:
           name: Reverse Channel (Solenoid)
           validators: *id008
           value: '4'
-    - Name: Shooter Winch Motor
-      Base: Speed Controller
-      Children: []
-      Properties:
-        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id009
-          default: '1'
-          name: Output Module (Digital)
-          validators: *id010
-          value: '1'
-        Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id011
-          default: Victor
-          name: Type
-          validators: null
-          value: Victor
-        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id012
-          default: '1'
-          name: Output Channel (PWM)
-          validators: *id013
-          value: '5'
     - Name: Intial Shooter Limit Switch
       Base: Digital Input
       Children: []
@@ -167,6 +145,28 @@ Children:
           name: Input Module (Digital)
           validators: &id017 [DigitalChannel]
           value: '1'
+    - Name: Shooter Winch Motor
+      Base: Speed Controller
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id009
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id010
+          value: '1'
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id011
+          default: Victor
+          name: Type
+          validators: null
+          value: Jaguar
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id012
+          default: '1'
+          name: Output Channel (PWM)
+          validators: *id013
+          value: '5'
     - Name: Final Shooter Limit Switch 1
       Base: Digital Input
       Children: []

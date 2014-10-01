@@ -449,7 +449,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Catch Button
       Base: Joystick Button
       Children: []
@@ -473,7 +473,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Down Shift Button
       Base: Joystick Button
       Children: []
@@ -603,7 +603,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Pass Ball Button
       Base: Joystick Button
       Children: []
@@ -651,7 +651,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Manual UnRewind Button
       Base: Joystick Button
       Children: []
@@ -675,7 +675,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Manual Rewind Button
       Base: Joystick Button
       Children: []
@@ -699,7 +699,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Manual Toggle Secondary Shooter Release Button
       Base: Joystick Button
       Children: []

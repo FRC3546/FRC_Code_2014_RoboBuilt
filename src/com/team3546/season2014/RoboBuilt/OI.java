@@ -81,15 +81,15 @@ public class OI {
         manualToggleSecondaryShooterReleaseButton = new JoystickButton(joystick2, 8);
         manualToggleSecondaryShooterReleaseButton.whenPressed(new ManualToggleSecondaryShooterRelease());
         manualRewindButton = new JoystickButton(joystick2, 7);
-        manualRewindButton.whileHeld(new ManualRewind());
+        manualRewindButton.whenPressed(new ManualRewind());
         manualUnRewindButton = new JoystickButton(joystick2, 6);
-        manualUnRewindButton.whileHeld(new ManualUnRewind());
+        manualUnRewindButton.whenPressed(new ManualUnRewind());
         manualPickupArmMotorButton = new JoystickButton(joystick2, 5);
-        manualPickupArmMotorButton.whileHeld(new ManualPickupArmMotor());
+        manualPickupArmMotorButton.whenPressed(new ManualPickupArmMotor());
         passBallButton = new JoystickButton(joystick2, 2);
         passBallButton.whenPressed(new PassBall());
         herdButton = new JoystickButton(joystick2, 1);
-        herdButton.whileHeld(new Herd());
+        herdButton.whenPressed(new Herd());
         joystick1 = new Joystick(1);
         
         manualToggleShooterReleaseButton = new JoystickButton(joystick1, 7);
@@ -101,9 +101,9 @@ public class OI {
         downShiftButton = new JoystickButton(joystick1, 4);
         downShiftButton.whenPressed(new ShiftDown());
         catchButton = new JoystickButton(joystick1, 3);
-        catchButton.whileHeld(new Catch());
+        catchButton.whenPressed(new Catch());
         pickUpButton = new JoystickButton(joystick1, 1);
-        pickUpButton.whileHeld(new Pickup());
+        pickUpButton.whenPressed(new Pickup());
 	    
         // SmartDashboard Buttons
         SmartDashboard.putData("Joystick Tank Drive", new JoystickTankDrive());

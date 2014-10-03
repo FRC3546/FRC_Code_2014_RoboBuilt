@@ -744,7 +744,7 @@ Children:
           name: Command
           type: Command
           validators: *id018
-          value: Manual Secondary Shooter Release
+          value: Manual Toggle Secondary Shooter Release
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: '1'
@@ -938,7 +938,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: Manual Secondary Shooter Release
+  - Name: Manual Toggle Secondary Shooter Release
     Base: Command
     Children: []
     Properties:

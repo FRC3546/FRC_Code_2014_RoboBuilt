@@ -11,9 +11,10 @@ package com.team3546.season2014.RoboBuilt.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
- *
+ * Toggles the status of the lights between on and off
  */
 public class  ToggleLights extends Command {
+    //The lights are completely separate from all other systems, so we won't bother with the StatusManager
     public ToggleLights() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,13 +25,15 @@ public class  ToggleLights extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        //Call the toggleLights() method from the lights subsystem
+        Robot.lights.toggleLights();
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
     // Called once after isFinished returns true
     protected void end() {

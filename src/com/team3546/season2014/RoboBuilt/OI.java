@@ -79,7 +79,7 @@ public class OI {
         toggleBackboardButton = new JoystickButton(joystick2, 9);
         toggleBackboardButton.whenPressed(new ToggleBackboard());
         manualToggleSecondaryShooterReleaseButton = new JoystickButton(joystick2, 8);
-        manualToggleSecondaryShooterReleaseButton.whenPressed(new ManualSecondaryShooterRelease());
+        manualToggleSecondaryShooterReleaseButton.whenPressed(new ManualToggleSecondaryShooterRelease());
         manualRewindButton = new JoystickButton(joystick2, 7);
         manualRewindButton.whileHeld(new ManualRewind());
         manualUnRewindButton = new JoystickButton(joystick2, 6);
@@ -118,7 +118,7 @@ public class OI {
         SmartDashboard.putData("Pass Ball", new PassBall());
         SmartDashboard.putData("Manual UnRewind", new ManualUnRewind());
         SmartDashboard.putData("Manual Rewind", new ManualRewind());
-        SmartDashboard.putData("Manual Secondary Shooter Release", new ManualSecondaryShooterRelease());
+        SmartDashboard.putData("Manual Toggle Secondary Shooter Release", new ManualToggleSecondaryShooterRelease());
         SmartDashboard.putData("Manual Toggle Shooter Release", new ManualToggleShooterRelease());
         SmartDashboard.putData("Manual Pickup Arm Motor", new ManualPickupArmMotor());
         SmartDashboard.putData("Auto Rewind", new AutoRewind());

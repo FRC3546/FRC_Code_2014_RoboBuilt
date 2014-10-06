@@ -50,12 +50,12 @@ public class  ManualUnRewind extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return !(Robot.oi.manualUnRewindButton.get());
     }
     // Called once after isFinished returns true
     protected void end() {
         if (executeCommand) {
-            Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorWind);
+            Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorOff);
             Robot.statusManager.doneWithSystems(requiredSystems);
         }
     }

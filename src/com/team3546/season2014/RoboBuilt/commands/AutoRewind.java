@@ -67,7 +67,7 @@ public class  AutoRewind extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.shooter.eitherFinalSwitchPressed();
+        return (Robot.shooter.eitherFinalSwitchPressed() || (Timer.getFPGATimestamp() - initialTime > 5));
     }
     // Called once after isFinished returns true
     protected void end() {

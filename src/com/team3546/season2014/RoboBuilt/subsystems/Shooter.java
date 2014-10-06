@@ -54,21 +54,19 @@ public class Shooter extends Subsystem {
      */
     public void setShooterWinchMotor(double setPoint) {
         if (setPoint == shooterWinchMotorWind) {
-            System.out.println(finalShooterLimitSwitch1.get() + " " + finalShooterLimitSwitch2.get());
             //Only wind the winch in if the switches are not pressed
             if (!(finalShooterLimitSwitch1.get() || finalShooterLimitSwitch2.get())) {
                 if (!intialShooterLimitSwitch.get()) {
-                    shooterWinchMotor.set(-Robot.shooterWinchMotorSpeed);
+                    shooterWinchMotor.set(Robot.shooterWinchMotorSpeed);
                 } else {
                     //Slow down because the initial switch is depressed
-                    shooterWinchMotor.set(-Robot.shooterWinchMotorSlowSpeed);
+                    shooterWinchMotor.set(Robot.shooterWinchMotorSlowSpeed);
                 }
+            } else {
+                shooterWinchMotor.set(shooterWinchMotorOff);
             }
         } else {
             shooterWinchMotor.set(setPoint);
-        }
-        if (finalShooterLimitSwitch1.get() || finalShooterLimitSwitch2.get()) {
-            shooterWinchMotor.set(shooterWinchMotorOff);
         }
     }
     /**

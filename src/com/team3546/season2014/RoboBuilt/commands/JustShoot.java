@@ -24,6 +24,8 @@ public class  JustShoot extends Command {
     RobotSystemsGroup requiredSystems;
     //Stores the result given by the status manager so we don't undo what we haven't done
     boolean executeCommand;
+    //Determines if the conditions for running the code are met
+    boolean conditionsMet;
     public JustShoot() {
         //Build a profile to describe the usage of this command
         requiredSystems = new RobotSystemsGroup();
@@ -41,11 +43,17 @@ public class  JustShoot extends Command {
     protected void initialize() {
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
         //Only run this command if one of the limit switches is pressed
-        if (executeCommand && Robot.shooter.eitherFinalSwitchPressed()) {
+        conditionsMet = executeCommand && Robot.shooter.eitherFinalSwitchPressed(); //TODO: Implement this throughout
+        if (conditionsMet) {
             //Loosen the cable
-            Robot.shooter.setShooterRelease(Shooter.shooterReleaseEngaged);
-            Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorUnwind);
-            Timer.delay(1);
+            Robot.shooter.setShooterRelease(Shooter.shooterReleaseEngaged); //Engage dog
+
+            //Unwinds for 1 second, feeds watchdog
+            double intialTime = Timer.getFPGATimestamp();
+            while (Timer.getFPGATimestamp() - intialTime < 1){
+                Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorUnwind);
+            }
+
             Robot.shooter.setShooterWinchMotor(Shooter.shooterWinchMotorOff);
             Robot.shooter.setShooterRelease(Shooter.shooterReleaseDisengaged);
             //Setup backboard and put arms down
@@ -66,13 +74,15 @@ public class  JustShoot extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        if (executeCommand) {
+        if (conditionsMet) {
             //Reset latch and re-engage dog gear
             Robot.shooter.setSecondaryShooterRelease(Shooter.secondaryShooterReleaseEngaged);
             Robot.shooter.setShooterRelease(Shooter.shooterReleaseEngaged);
             Timer.delay(0.5);
             //At this point, the arms have to stay extended so that they don't hit the currently released catapult
             //They will be retracted by the auto-rewind
+        }
+        if (executeCommand) {
             Robot.statusManager.doneWithSystems(requiredSystems);
         }
     }

@@ -613,7 +613,7 @@ Children:
           name: Command
           type: Command
           validators: *id018
-          value: Pass Ball
+          value: Pass and rewind
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: '1'
@@ -757,7 +757,7 @@ Children:
           name: Command
           type: Command
           validators: *id018
-          value: Shoot and rewind
+          value: Just Shoot
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: '1'
@@ -944,6 +944,12 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   - Name: Shoot and rewind
+    Base: Command Group
+    Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+  - Name: Pass and rewind
     Base: Command Group
     Children: []
     Properties:

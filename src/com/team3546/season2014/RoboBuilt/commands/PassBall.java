@@ -42,6 +42,7 @@ public class  PassBall extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
         executeCommand = Robot.statusManager.checkForConflictsAndSetNewStatus(requiredSystems);
+        //TODO: Fix limit switch check
         if (executeCommand && Robot.shooter.eitherFinalSwitchPressed()) {
             Robot.shooter.setShooterRelease(Shooter.shooterReleaseEngaged);
             Robot.shooter.setSecondaryShooterRelease(Shooter.secondaryShooterReleaseDisengaged);

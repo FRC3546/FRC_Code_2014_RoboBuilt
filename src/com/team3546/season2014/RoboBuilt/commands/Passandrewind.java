@@ -15,13 +15,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  * Calls the shoot command followed by the auto rewind command
  */
-public class Shootandrewind extends CommandGroup {
-    
-    public  Shootandrewind() {
-        System.out.println("Shooting and rewinding");
-        addSequential(new JustShoot());
+public class Passandrewind extends CommandGroup {
+
+    public Passandrewind() {
+        System.out.println("Passing and rewinding");
+        addSequential(new PassBall());
         System.out.println("rewinding");
-//        addSequential(new AutoRewind());
+        addSequential(new AutoRewind());
         System.out.println("done");
     }
 }

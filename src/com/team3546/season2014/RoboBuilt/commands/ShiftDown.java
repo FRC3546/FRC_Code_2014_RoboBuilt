@@ -8,10 +8,11 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package com.team3546.season2014.RoboBuilt.commands;
+import com.team3546.season2014.RoboBuilt.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
- *
+ * Shifts the gearing to give torque
  */
 public class  ShiftDown extends Command {
     public ShiftDown() {
@@ -23,13 +24,15 @@ public class  ShiftDown extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+//        System.out.println("Shifting Down");
+        Robot.driveTrain.shift(DriveTrain.lowGear);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
     // Called once after isFinished returns true
     protected void end() {
@@ -37,5 +40,6 @@ public class  ShiftDown extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        end();
     }
 }

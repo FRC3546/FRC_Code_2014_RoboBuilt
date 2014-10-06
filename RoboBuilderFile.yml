@@ -53,7 +53,7 @@ Children:
           default: Victor
           name: Type
           validators: null
-          value: Victor
+          value: Jaguar
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
           choices: &id012 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
           default: '1'
@@ -62,7 +62,7 @@ Children:
           value: '6'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: Pickup}
+        name: Default Command, type: Command, validators: null, value: None}
   - Name: Backboard
     Base: Subsystem
     Children:
@@ -128,28 +128,6 @@ Children:
           name: Reverse Channel (Solenoid)
           validators: *id008
           value: '4'
-    - Name: Shooter Winch Motor
-      Base: Speed Controller
-      Children: []
-      Properties:
-        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id009
-          default: '1'
-          name: Output Module (Digital)
-          validators: *id010
-          value: '1'
-        Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id011
-          default: Victor
-          name: Type
-          validators: null
-          value: Victor
-        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id012
-          default: '1'
-          name: Output Channel (PWM)
-          validators: *id013
-          value: '5'
     - Name: Intial Shooter Limit Switch
       Base: Digital Input
       Children: []
@@ -167,6 +145,28 @@ Children:
           name: Input Module (Digital)
           validators: &id017 [DigitalChannel]
           value: '1'
+    - Name: Shooter Winch Motor
+      Base: Speed Controller
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id009
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id010
+          value: '1'
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id011
+          default: Victor
+          name: Type
+          validators: null
+          value: Jaguar
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id012
+          default: '1'
+          name: Output Channel (PWM)
+          validators: *id013
+          value: '5'
     - Name: Final Shooter Limit Switch 1
       Base: Digital Input
       Children: []
@@ -418,41 +418,6 @@ Children:
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
-  - Name: Pneumatic System
-    Base: Subsystem
-    Children:
-    - Name: Compressor
-      Base: Compressor
-      Children: []
-      Properties:
-        Spike Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2', '3', '4', '5', '6', '7', '8']
-          default: '1'
-          name: Spike Channel (Relay)
-          validators: [RelayOutput]
-          value: '2'
-        Spike Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2']
-          default: '1'
-          name: Spike Module (Digital)
-          validators: [RelayOutput]
-          value: '1'
-        Pressure Switch Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2']
-          default: '1'
-          name: Pressure Switch Module (Digital)
-          validators: [DigitalChannel]
-          value: '1'
-        Pressure Switch Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
-            '13', '14']
-          default: '1'
-          name: Pressure Switch Channel (Digital)
-          validators: [DigitalChannel]
-          value: '2'
-    Properties:
-      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
   Properties: {}
 - Name: Operator Interface
   Base: OI
@@ -484,7 +449,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Catch Button
       Base: Joystick Button
       Children: []
@@ -508,7 +473,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Down Shift Button
       Base: Joystick Button
       Children: []
@@ -638,7 +603,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Pass Ball Button
       Base: Joystick Button
       Children: []
@@ -648,7 +613,7 @@ Children:
           name: Command
           type: Command
           validators: *id018
-          value: Pass Ball
+          value: Pass and rewind
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: '1'
@@ -662,7 +627,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Manual Pickup Arm Motor Button
       Base: Joystick Button
       Children: []
@@ -686,7 +651,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Manual UnRewind Button
       Base: Joystick Button
       Children: []
@@ -710,7 +675,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Manual Rewind Button
       Base: Joystick Button
       Children: []
@@ -734,7 +699,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
     - Name: Manual Toggle Secondary Shooter Release Button
       Base: Joystick Button
       Children: []
@@ -792,7 +757,7 @@ Children:
           name: Command
           type: Command
           validators: *id018
-          value: Shoot
+          value: Just Shoot
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: '1'
@@ -874,7 +839,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Lights}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: Shoot
+  - Name: Just Shoot
     Base: Command
     Children: []
     Properties:
@@ -976,6 +941,18 @@ Children:
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+  - Name: Shoot and rewind
+    Base: Command Group
+    Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+  - Name: Pass and rewind
+    Base: Command Group
+    Children: []
+    Properties:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   Properties: {}

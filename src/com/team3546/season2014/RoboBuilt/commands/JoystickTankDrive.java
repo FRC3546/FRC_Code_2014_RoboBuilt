@@ -11,9 +11,10 @@ package com.team3546.season2014.RoboBuilt.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import com.team3546.season2014.RoboBuilt.Robot;
 /**
- *
+ * Passes joystick values to the drive train
  */
 public class  JoystickTankDrive extends Command {
+    //The joystick driving is a completely independent system so we won't be needing the status manager
     public JoystickTankDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,9 +25,13 @@ public class  JoystickTankDrive extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.println("Drivetrain initializing");
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        Robot.driveTrain.takeJoystickInputs(
+                Robot.oi.getJoystick1(),
+                Robot.oi.getJoystick2());
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -34,9 +39,11 @@ public class  JoystickTankDrive extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
+        Robot.driveTrain.stop();
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        end();
     }
 }
